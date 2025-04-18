@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>{{title}}</title>
+	<style>
+		body {
+			font-family: system-ui, -apple-system, sans-serif;
+			max-width: 800px;
+			margin: 0 auto;
+			padding: 2rem;
+			line-height: 1.6;
+		}
+		header {
+			border-bottom: 1px solid #eee;
+			padding-bottom: 1rem;
+			margin-bottom: 2rem;
+		}
+		footer {
+			margin-top: 2rem;
+			padding-top: 1rem;
+			border-top: 1px solid #eee;
+			font-size: 0.8rem;
+			color: #666;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<h1>🦕 {{title}}</h1>
+	</header>
+
+	<main>
+		<p>{{message}}</p>
+		<p>Esta es una aplicación Deno con las siguientes características:</p>
+		<ul>
+			<li>🌳 Framework Oak para servidor web</li>
+			<li>🗄️ Drizzle ORM con SQLite</li>
+			<li>🖼️ Motor de plantillas Handlebars</li>
+		</ul>
+	</main>
+
+	<footer>
+		<p>Deno Boilerplate &copy; {{currentYear}}</p>
+	</footer>
+
+	<script>
+		// Actualiza el año actual en el pie de página
+		document.querySelector('footer p').innerHTML =
+			document.querySelector('footer p').innerHTML.replace('{{currentYear}}', new Date().getFullYear());
+	</script>
+</body>
+</html>

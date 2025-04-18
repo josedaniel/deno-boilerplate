@@ -1,0 +1,24 @@
+{
+	"tasks": {
+		// ✅ Tarea para iniciar el servidor en modo producción
+		"start": "deno run --allow-net --allow-env --allow-write --allow-read main.ts",
+		// 🔄 Tarea para desarrollo con recarga automática
+		"dev": "deno run --allow-net --allow-env --allow-write --allow-read --watch main.ts",
+		// 🔨 Tarea para compilar el proyecto
+		"compile": "deno compile --allow-net --allow-write --allow-read main.ts",
+		// 🔍 Tarea para iniciar Drizzle Studio
+		"studio": "drizzle-kit studio --port 8081"
+	},
+	"fmt": {
+		// 📏 Usar tabs para la indentación
+		"useTabs": true,
+		"lineWidth": 100,
+		"indentWidth": 4,
+		"semiColons": true,
+		"singleQuote": true
+	},
+	"importMap": "./deno-import-map.json",
+	"compilerOptions": {
+		"lib": ["deno.window"]
+	}
+}
