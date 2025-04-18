@@ -1,5 +1,6 @@
 import { Router, Application } from "oak";
 import { renderView } from "./renderer.ts";
+import { PetController } from "../controllers/PetController.ts";
 
 // 🔀 Router configuration
 export function configureRouter(app: Application) {
@@ -22,6 +23,14 @@ export function configureRouter(app: Application) {
 			typescript: Deno.version.typescript
 		};
 	});
+
+	// 🐾 Pet API routes
+	router
+		.get("/api/pets", PetController.getAll)
+		.get("/api/pets/:id", PetController.getById)
+		.post("/api/pets", PetController.create)
+		.put("/api/pets/:id", PetController.update)
+		.delete("/api/pets/:id", PetController.delete);
 
 	// 📚 Add routes to the application
 	app.use(router.routes());

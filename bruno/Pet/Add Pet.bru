@@ -1,0 +1,19 @@
+meta {
+  name: Add Pet
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:8080/api/pets
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "type": "mamifero",
+    "name": "Fido",
+    "species": "Perro"
+  }
+}

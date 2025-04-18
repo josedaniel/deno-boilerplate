@@ -2,12 +2,24 @@ import { load } from "dotenv";
 import { Application } from "oak";
 import { join } from "path";
 import { configureRouter } from "./src/config/routes.ts";
+import { testConnection } from "./src/config/database.ts";
+import { syncPetModel } from "./src/models/Pet.ts";
 
 // 🚀 Main function
 async function main() {
 	// 📝 Load environment variables
 	const env = await load();
 	const PORT = parseInt(env.PORT || "8080");
+
+	// 🗄️ Initialize database connection
+	const dbConnected = await testConnection();
+	if (!dbConnected) {
+		console.error("❌ Failed to connect to the database. Exiting...");
+		Deno.exit(1);
+	}
+
+	// 📊 Sync models with the database
+	await syncPetModel();
 
 	// 🌳 Create Oak application
 	const app = new Application();
